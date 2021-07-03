@@ -4,7 +4,7 @@ import qualified Crypto.PubKey.ECC.ECDSA as ECDSA
 import qualified Crypto.PubKey.ECC.Generate as ECC
 import qualified Crypto.PubKey.ECC.Prim as ECC
 import qualified Crypto.PubKey.ECC.Types as ECC
-import Curve as C
+import Curve ( Curve(..) )
 
 data CurveAltBn128G1 = CurveAltBn128G1 deriving (Show)
 
@@ -28,7 +28,7 @@ curveAltBn128G1 =
           ECC.ecc_h = 0x1
         }
 
-instance C.Curve CurveAltBn128G1 where
+instance Curve CurveAltBn128G1 where
   curve = const curveAltBn128G1
   cc = ECC.common_curve . curve
   a = ECC.ecc_a . cc
