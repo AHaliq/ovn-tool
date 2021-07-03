@@ -19,11 +19,31 @@ extra-source-files:
 # common to point users to the README.md file.
 description:         Please see the README on GitHub at <https://github.com/githubuser/ovn-tool#readme>
 
+flags:
+  static:
+    description: Emit statically-linked binary
+    manual: False
+    default: False
+
+  optimized:
+    description: Perform compiler optimizations
+    manual: False
+    default: False
+
 dependencies:
 - base >= 4.7 && < 5
+- protolude  >= 0.2
+- cryptonite
+- bytestring
+- random
+- memory
 
 library:
   source-dirs: src
+  exposed-modules:
+    - Curve
+    - CurveAltBn128G1
+    - Lib
 
 executables:
   ovn-tool-exe:

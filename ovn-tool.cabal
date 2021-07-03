@@ -23,8 +23,20 @@ source-repository head
   type: git
   location: https://github.com/githubuser/ovn-tool
 
+flag optimized
+  description: Perform compiler optimizations
+  manual: False
+  default: False
+
+flag static
+  description: Emit statically-linked binary
+  manual: False
+  default: False
+
 library
   exposed-modules:
+      Curve
+      CurveAltBn128G1
       Lib
   other-modules:
       Paths_ovn_tool
@@ -32,6 +44,11 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , bytestring
+    , cryptonite
+    , memory
+    , protolude >=0.2
+    , random
   default-language: Haskell2010
 
 executable ovn-tool-exe
@@ -43,7 +60,12 @@ executable ovn-tool-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , bytestring
+    , cryptonite
+    , memory
     , ovn-tool
+    , protolude >=0.2
+    , random
   default-language: Haskell2010
 
 test-suite ovn-tool-test
@@ -56,5 +78,10 @@ test-suite ovn-tool-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , bytestring
+    , cryptonite
+    , memory
     , ovn-tool
+    , protolude >=0.2
+    , random
   default-language: Haskell2010
